@@ -9,6 +9,7 @@ class Loja extends Model
 {
     use HasFactory;
     protected $fillable = [];
+    protected $guarded = [];
     protected $casts = [
         'sectors' => 'array'
     ];

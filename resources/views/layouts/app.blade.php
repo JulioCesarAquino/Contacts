@@ -25,15 +25,8 @@
 
     <!-- Croppie upload image -->
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/dropzone/dist/dropzone.css" />
-    <link href="https://unpkg.com/cropperjs/dist/cropper.css" rel="stylesheet" />
-    <script src="https://unpkg.com/dropzone"></script>
-    <script src="https://unpkg.com/cropperjs"></script>
-
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 
 
@@ -113,32 +106,33 @@
                         </a>
                     </li>
                     <li class="nav-item menu-items">
-                        <a class="nav-link collapsed" data-toggle="collapse" href="#ui-basic" aria-expanded="false"
-                            aria-controls="ui-basic">
+                        <a class="nav-link collapsed" data-toggle="collapse" href="#tagloja" aria-expanded="false"
+                            aria-controls="tagloja">
                             <span class="menu-icon">
                                 <i class="mdi mdi-plus-one"></i>
                             </span>
                             <span class="menu-title">Loja</span>
                             <i class="menu-arrow"></i>
                         </a>
-                        <div class="collapse" id="ui-basic" style="">
+                        <div class="collapse" id="tagloja" style="">
                             <ul class="nav flex-column sub-menu">
                                 <li class="nav-item"> <a class="nav-link"
                                         href="{{ url('/create') }}">Adicionar</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="#">Remover</a></li>
+                                <li class="nav-item"> <a class="nav-link"
+                                        href="{{ url('/delete') }}">Remover</a></li>
                             </ul>
                         </div>
                     </li>
                     <li class="nav-item menu-items">
-                        <a class="nav-link collapsed" data-toggle="collapse" href="#ui-bus" aria-expanded="false"
-                            aria-controls="ui-bus">
+                        <a class="nav-link collapsed" data-toggle="collapse" href="#tagsetor" aria-expanded="false"
+                            aria-controls="tagsetor">
                             <span class="menu-icon">
                                 <i class="mdi mdi-plus-circle-multiple-outline"></i>
                             </span>
                             <span class="menu-title">Setor</span>
                             <i class="menu-arrow"></i>
                         </a>
-                        <div class="collapse" id="ui-bus" style="">
+                        <div class="collapse" id="tagsetor" style="">
                             <ul class="nav flex-column sub-menu">
                                 <li class="nav-item"> <a class="nav-link"
                                         href="{{ url('/create-setor') }}">Adicionar</a></li>
@@ -208,7 +202,7 @@
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown"
+                                <a class="nav-link pr-4" id="profileDropdown" href="#" data-toggle="dropdown"
                                     aria-expanded="false">
                                     <div class="navbar-profile">
                                         <img class="img-xs rounded-circle" src="images/face15.jpg" alt="">
@@ -233,15 +227,14 @@
                                     </a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item preview-item">
-                                        <div class="preview-thumbnail">
+                                        <div class="preview-thumbnail"
+                                            onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                                             <div class="preview-icon bg-dark rounded-circle">
-                                                <i class="mdi mdi-logout text-danger"
-                                                    onclick="event.preventDefault();document.getElementById('logout-form').submit();"></i>
+                                                <i class="mdi mdi-logout text-danger"></i>
                                             </div>
                                         </div>
                                         <div class="preview-item-content">
-                                            <p class="preview-subject mb-1"
-                                                onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                                            <p class="preview-subject mb-1">
                                                 Sair</p>
                                         </div>
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST"
@@ -282,17 +275,25 @@
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
     <script src="vendors/js/vendor.bundle.base.js"></script>
     <!-- endinject -->
     <!-- Plugin js for this page -->
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="vendors/chart.js/Chart.min.js"></script>
+    <script srsc="vendors/chart.js/Chart.min.js"></script>
     <script src="vendors/progressbar.js/progressbar.min.js"></script>
-    <script src="vendors/jvectormap/jquery-jvectormap.min.js"></script>
+    <script rc="vendors/jvectormap/jquery-jvectormap.min.js"></script>
     <script src="vendors/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
     <script src="vendors/owl-carousel-2/owl.carousel.min.js"></script>
     <script src="vendors/select2/select2.min.js"></script>
+    <script src="js/jquery-jvectormap.js"></script>
     <!-- End plugin js for this page -->
     <!-- inject:js -->
     <script src="js/off-canvas.js"></script>

@@ -16,12 +16,12 @@
                 </div>
                 <div class="form-group">
                     <label for="inputPhone">Telefone</label>
-                    <input type="text" class="form-control" name="phone" placeholder="(xx)xxxxx-xxxx">
+                    <input type="text" class="form-control" name="phone" placeholder="(xx)xxxxx-xxxx" onkeypress="$(this).mask('(00) 00000-0009')">
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-2">
                         <label for="inputZip">CEP</label>
-                        <input type="text" class="form-control" name="cep">
+                        <input type="text" class="form-control" name="cep" onkeypress="$(this).mask('00000-000')">
                     </div>
                     <div class="form-group col-md-6">
                         <label for="inputCity">Cidade</label>
@@ -75,16 +75,6 @@
                         <input type="text" class="form-control" name="number">
                     </div>
                 </div>
-                <!-- <div class="form-group">
-                                <label>File upload</label>
-                                <input type="file" name="img[]" class="file-upload-default">
-                                <div class="input-group col-xs-12">
-                                    <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
-                                    <span class="input-group-append">
-                                        <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
-                                    </span>
-                                </div>
-                            </div> -->
                 <div class="form-group">
                     <label>Setores</label>
                     <select class="js-example-basic-multiple" name="sectors[]" multiple="multiple" style="width:100%">
@@ -102,8 +92,8 @@
                                 <div class="overlay">
                                     <div class="text"><p>ㅤㅤㅤㅤㅤㅤㅤclique para selecionar a imagem</p></div>
                                 </div>
-                                <input type="file" name="image" id="fileImage"
-                                    style="display:none">
+                                <input type="file" name="photo" id="fileImage"
+                                    style="display:none" accept="image/*">
                             </label>
                         </div>
                     </div>
@@ -124,7 +114,7 @@
                  }
                  reader.readAsDataURL(file.files[0]);
             });
-
     </script>
+    
 
 @endsection

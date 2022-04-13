@@ -5,6 +5,7 @@ use App\Http\Controllers\LojaController;
 use App\Http\Controllers\SetorController;
 use App\Http\Controllers\FuncionarioController;
 use App\Http\Controllers\HomeController;
+use App\Models\Funcionario;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,14 +24,24 @@ Route::get('/404', function () {return view('layouts.404');});
 Auth::routes();
 
 /****  Routes  home ****/
-Route::get('/', [LojaController::class, 'index']);
+Route::get('/', [LojaController::class, 'indice']);
 Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware('auth');
+
+/****  Routes  Loja ****/
 Route::get('/index', [LojaController::class, 'index'])->middleware('auth');
 Route::get('/create', [LojaController::class, 'create'])->middleware('auth');
 Route::post('/add', [LojaController::class, 'store']);
+Route::get('/delete', [LojaController::class, 'delete'])->middleware('auth');
+Route::delete('/delete/{id}', [LojaController::class, 'destroy']);
+Route::post('/edit', [LojaController::class, 'update']);
 
 /****  Routes  setor ****/
 Route::get('/create-setor', [SetorController::class, 'create'])->middleware('auth');
 Route::post('/add-setor', [SetorController::class, 'store']);
+
+/****  Routes  Funcionario ****/
+Route::post('/add-func', [FuncionarioController::class, 'store']);
+
+
 
 

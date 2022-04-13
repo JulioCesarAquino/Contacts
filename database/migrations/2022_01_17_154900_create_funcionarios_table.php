@@ -16,12 +16,14 @@ class CreateFuncionariosTable extends Migration
     {
         Schema::create('funcionarios', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 50)->change();
-            $table->string('whatsapp', 15)->change();
-            $table->string('e-mail');
+            $table->string('name');
+            $table->string('whatsapp');
+            $table->string('email');
             $table->string('photo');
-            $table->foreignId('loja_id')->constrained();
-            $table->foreignId('setor_id')->constrained('setors');
+            $table->bigInteger('setor_id')->unsigned();
+            $table->foreign('setor_id')->references('id')->on('setors')->onDelete('cascade');
+            $table->bigInteger('loja_id')->unsigned();
+            $table->foreign('loja_id')->references('id')->on('lojas')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -34,8 +36,10 @@ class CreateFuncionariosTable extends Migration
     public function down()
     {
         Schema::dropIfExists('funcionarios', Function (Blueprint $table){
-            $table->foreignId('loja_id')->constreined()->onDelete('cascade');
-            $table->foreignId('setors_id')->constreined()->onDelete('cascade');
+            $table->bigInteger('setor_id')->unsigned();
+            $table->foreign('setor_id')->references('id')->on('setors')->onDelete('cascade');
+            $table->bigInteger('loja_id')->unsigned();
+            $table->foreign('loja_id')->references('id')->on('lojas')->onDelete('cascade');
         });
     }
 }
