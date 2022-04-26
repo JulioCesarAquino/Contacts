@@ -32,7 +32,7 @@ Route::get('/index', [LojaController::class, 'index'])->middleware('auth');
 Route::get('/create', [LojaController::class, 'create'])->middleware('auth');
 Route::post('/add', [LojaController::class, 'store']);
 Route::get('/delete', [LojaController::class, 'delete'])->middleware('auth');
-Route::delete('/delete/{id}', [LojaController::class, 'destroy']);
+Route::get('/destroy/{id}', [LojaController::class, 'destroy']);
 Route::post('/edit', [LojaController::class, 'update']);
 
 /****  Routes  setor ****/
@@ -41,6 +41,7 @@ Route::post('/add-setor', [SetorController::class, 'store']);
 
 /****  Routes  Funcionario ****/
 Route::post('/add-func', [FuncionarioController::class, 'store']);
+Route::get('/delete-func/{id}', [FuncionarioController::class, 'destroy']);
 
 
 

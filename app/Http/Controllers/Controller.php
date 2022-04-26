@@ -15,7 +15,8 @@ class Controller extends BaseController
     {
         if ($file->hasFile('photo') && $file->file('photo')->isValid()) {
             $requestImage = $file->photo;
-            $temporaryImage =  imagecreatefromjpeg($requestImage->getPathname());
+            $extension  = $requestImage->extension();
+            $temporaryImage = $extension == 'png' ? imagecreatefrompng($requestImage->getPathname()) : imagecreatefromjpeg($requestImage->getPathname());
             $originalWidth = imagesx($temporaryImage);
             $originalHeight = imagesy($temporaryImage);
             // Largura e altura pretendida em pixels
@@ -23,7 +24,7 @@ class Controller extends BaseController
             $newHeight = $height;
             $resizeImage = imagecreatetruecolor($newWidth, $newHeight);
             imagecopyresampled($resizeImage, $temporaryImage, 0, 0, 0, 0, $newWidth, $newHeight, $originalWidth, $originalHeight);
-            $extension  = $requestImage->extension();
+            
             $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extension;
             imagejpeg($resizeImage, $directory . $imageName);
             return $imageName;

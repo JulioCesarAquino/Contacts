@@ -39,7 +39,7 @@
                             <span class="menu-title">{{ $setor->name }}</span>
                             <i class="menu-arrow"></i>
                         </button>
-                        <div class="dropdown-list collapse" id="ui-funcionario-{{ $setor->id }}" style="">
+                        <div class="dropdown-list collapse" id="ui-funcionario-{{ $setor->id }}">
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>
@@ -62,23 +62,42 @@
                                             </td>
                                             <td> {{ $funcionario->email }} </td>
                                             <td>
+                                                @auth
                                                 <div class="btn-group" role="group" aria-label="Basic example">
-                                                    <a class="btn btn-outline-success" target="
-                                                                                            true" href="https://api.whatsapp.com/send?phone=55{{ preg_replace('/[^0-9]/', '', $funcionario->whatsapp) }}">
+                                                    <a class="btn btn-outline-success" target="true" href="https://api.whatsapp.com/send?phone=55{{ preg_replace('/[^0-9]/', '', $funcionario->whatsapp) }}">
                                                         <i class="mdi mdi-whatsapp"></i>
                                                     </a>
                                                     <a class="btn btn-outline-danger ml-01 close-modal" onclick="acao()">
                                                         <i class="mdi mdi-delete"></i>
-                                                    
                                                     </a>
-                                                    <div class="modalAlert">
-                                                        <a onclick="fechar()" class="close-modal">Close</a>
-                                                        <p>Second !</p>
-                                                    </div>
                                                     <script>
                                                         function acao() {
-                                                            let modal = document.querySelector('.modalAlert')
-                                                            modal.style.display = 'block';
+                                                            Swal.fire({
+                                                                title: "Excluir colaborador",
+                                                                text: "Tem certeza que deseja excluir colaborador!",
+                                                                icon: "warning",
+                                                                button: "Yes!",
+                                                                showCloseButton: true,
+                                                                showCancelButton: true,
+                                                                focusConfirm: false,
+                                                                
+                                                                
+                                                                cancelButtonText: 'Não!',
+                                                            
+                                                            }).then((value) => {
+                                                                if (value.isConfirmed) {
+
+                                                                    fetch('/delete-func/{{ $funcionario->id }}').then(response => {
+                                                                        console.log(response)
+                                                                        if (response.redirected) {
+                                                                            location.href = '/delete'
+                                                                        }
+                                                                    }).catch(err => {
+                                                                        console.log(err)
+
+                                                                    })
+                                                                }
+                                                            });
                                                         }
 
                                                         function fechar() {
@@ -86,12 +105,14 @@
                                                             modal.style.display = 'none';
                                                         }
                                                     </script>
-                                                    <form action="/delete-func/{{ $funcionario->id }}" method="POST">
-                                                        @csrf
-                                                        @method('delete')
 
-                                                    </form>
                                                 </div>
+                                                @endauth
+                                                @guest
+                                                <a class="badge badge-outline-success whats" target="true" href="https://api.whatsapp.com/send?phone=55{{ preg_replace('/[^0-9]/', '', $funcionario->whatsapp) }}">
+                                                    <i class="mdi mdi-whatsapp"></i> WhatsApp
+                                                </a>
+                                                @endguest
                                             </td>
                                         </tr>
                                     </tbody>
@@ -126,21 +147,4 @@
     </div>
     @endforeach
 </div>
-<script>
-    $("#btn4").click(function() {
-        swal({
-            title: "Atenção!",
-            text: "Clique no botão para ser redirecionado!",
-            icon: "warning",
-            buttons: true,
-        }).then(function(result) {
-            if (result) {
-                alert("Coloque aqui o window.location.href");
-            } else {
-                alert("Você não será redirecionado pois clicou em \"Cancel\"");
-            }
-        });
-    });
-</script>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 @endsection
