@@ -16,16 +16,14 @@ class LojaController extends Controller
     {
         $lojas = Loja::all();
         $setors = Setor::all();
-        return view('layouts.index', ['lojas' => $lojas], ['setors' => $setors]);
+        $funcionarios = Funcionario::all();
+        return view('layouts.index')->with('lojas', $lojas)->with('setors', $setors)->with('funcionarios', $funcionarios);
+        
     }
 
     public function indice()
     {
-        $lojas = Loja::all();
-        // $lojinha = Loja::findOrFail(2);
-        $funcionarios = Funcionario::all();
-        $setores = Setor::all();
-        return view('welcome')->with('lojas', $lojas)->with('setores', $setores)->with('funcionarios', $funcionarios);
+        return view('welcome');
     }
 
     public function create()

@@ -15716,12 +15716,12 @@ a.badge-dark.focus {
 
 .progress {
     display: flex;
-    height: 1rem;
+    height: 4px;
     overflow: hidden;
     line-height: 0;
     font-size: 0.75rem;
-    background-color: #000000;
-    border-radius: 0.25rem;
+    background-color: #2f323a;
+    border-radius: 0px;
 }
 
 .progress-bar {
@@ -20308,6 +20308,7 @@ a.text-dark:focus {
 .text-muted,
 .preview-list .preview-item .preview-item-content p .content-category {
     color: #6c7293 !important;
+    margin-bottom: 0%;
 }
 
 .text-black-50 {
@@ -26755,11 +26756,6 @@ body.avgrund-active {
 .demo-progress-circle {
     -webkit-transform: rotate(-90deg);
     transform: rotate(-90deg);
-}
-
-.progress {
-    background-color: #2f323a;
-    border-radius: 0px;
 }
 
 .progress .progress-bar {

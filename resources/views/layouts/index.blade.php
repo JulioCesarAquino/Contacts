@@ -15,47 +15,52 @@
     @foreach ($lojas as $loja)
     <div class="card-unidade">
         <div class="card-body">
-            <h4 class="card-title">Peça rara - {{ $loja->name }}</h4>
+            <h4 class="card-title text-muted mb-3">Peça rara - {{ $loja->name }}</h4>
             <div class="item">
                 <img src="images/loja/{{ $loja->photo }}" class="card-img-top" alt="...">
             </div>
-            <div class="d-flex py-4">
+            <div class="d-flex mt-3">
                 <div class="preview-list w-100">
-                    <div class="preview-item p-0">
-                        <div class="preview-item-content d-flex flex-grow">
-                            <div class="flex-grow">
-                                <div class="d-flex d-md-block d-xl-flex justify-content-between">
-                                    <h6 class="preview-subject"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt mb-1" viewBox="0 0 16 16" style="padding-top: -4px;">
-                                            <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z"></path>
-                                            <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>
-                                        </svg> {{$loja->city}}-{{$loja->uf}}</h6>
-                                    <p class="text-muted text-small">4 Hours Ago</p>
-                                </div>
-                                <p class="text-muted">Well, it seems to be working now.</p>
+                    <div class="flex-grow">
+                        <div class="d-flex d-md-block d-xl-flex justify-content-between">
+                            <h4 class="text-muted preview-subject"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt mb-1" viewBox="0 0 16 16" style="padding-top: -4px;">
+                                    <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z"></path>
+                                    <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>
+                                </svg> {{$loja->district}}</h4>
+                            <p class="text-muted text-small">4 Hours Ago</p>
+                        </div>
+                        <span class="progress"></span>
+                        <div class="row">
+                            <div class="col ml-2 mt-2">
+                                <p class="text-muted"><i class="mdi mdi-phone-classic"></i> {{$loja->phone}}</p>
+                                <p class="text-muted"><i class="mdi mdi-email"></i> {{$loja->email}} </p>
+                                <p class="text-muted"><i class="mdi mdi-google-maps"></i> {{$loja->city}} - {{$loja->uf}} </p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <p class="text-muted">Well, it seems to be working now. </p>
-            <div class="progress progress-md portfolio-progress mb-3">
-                <div class="progress-bar bg-success" role="progressbar" style="width: 50%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
+
+            <span class="progress mb-3"></span>
             <div class="row mb-3">
+                @auth
                 <div class="col">
-                    <a href="#" class="btn btn-secondary" data-toggle="modal" data-target="#contact-{{ $loja->id }}"><i class="mdi mdi-account-multiple-plus"></i>Colabo</a>
+                    <a href="#" class="btn btn-secondary" data-toggle="modal" data-target="#contact-{{ $loja->id }}"><i class="mdi mdi-account-multiple-plus"></i>Colab.</a>
                 </div>
                 <div class="col">
                     <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#edit-{{ $loja->id }}"><i class="mdi mdi-tooltip-edit"></i>Editar</a>
                 </div>
                 <div class="col">
-                    <a href="#" class="btn btn-success" data-toggle="modal" data-target="#edit-{{ $loja->id }}"><i class="mdi mdi-whatsapp"></i>Whats</a>
+                    <a href="#" class="btn btn-success" data-toggle="modal" data-target="#id-{{ $loja->id }}"><i class="mdi mdi-whatsapp"></i>Whats</a>
                 </div>
+                @endauth
+                @guest
+                <div class="col">
+                    <a href="#" class="btn btn-success" data-toggle="modal" data-target="#id-{{ $loja->id }}"><i class="mdi mdi-whatsapp"></i>WhatsApp</a>
+                </div>
+                @endguest
             </div>
-            <small class="text-muted ml-2 mb-2"> {{ $loja->cep}} | {{$loja->city}}-{{$loja->uf}} <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt mb-1" viewBox="0 0 16 16" style="padding-top: -4px;">
-                    <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z"></path>
-                    <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>
-                </svg>
+            <small class="text-muted ml-2"><i class="mdi mdi-calendar-clock"></i> Segunda à Sábado: 9h00 às 19h00
             </small>
 
         </div>
@@ -271,9 +276,11 @@
                                 <label>Setores</label>
                                 <select class="js-example-basic-multiple" name="sectors[]" multiple="multiple" style="width:100%">
                                     @foreach ($setors as $setor)
-                                    @foreach ($loja->sectors as $ljsetor)
-                                    @if ($setor == $ljsetor)
+                                    @foreach ($loja->sectors as $sector)
+                                    @if ($sector == $setor->id)
                                     <option selected="true" value="{{ $setor->id }}">{{ $setor->name }}</option>
+                                    @elseif ($sector != $setor->id)
+                                    <option value="{{ $setor->id }}">{{ $setor->name }}</option>
                                     @endif
                                     @endforeach
                                     @endforeach
@@ -353,6 +360,131 @@
                 </script>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Sair</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Entre em contato -->
+    <div class="modal fade" id="id-{{ $loja->id }}" tabindex="-1" role="dialog" aria-labelledby="id-{{ $loja->id }}Label" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="id-{{ $loja->id }}">Entre em contato</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    @foreach ($setors as $setor)
+                    @foreach ($loja->sectors as $sector)
+                    @if ($sector == $setor->id)
+                    <ul class="nav-item menu-items">
+                        <button type="button" class="btn btn-dark btn-lg btn-block" data-toggle="collapse" href="#ui-funcionario-{{ $setor->id }}" aria-expanded="false" aria-controls="ui-basic">
+                            <span class="menu-title">{{ $setor->name }}</span>
+                            <i class="menu-arrow"></i>
+                        </button>
+                        <div class="dropdown-list collapse" id="ui-funcionario-{{ $setor->id }}">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th> Colaborador </th>
+                                            <th> Email </th>
+                                            <th> Contatar </th>
+                                        </tr>
+                                    </thead>
+                                    @foreach ($funcionarios as $funcionario)
+                                    @if ($funcionario->setor_id == $setor->id and $funcionario->loja_id == $loja->id)
+                                    <tbody>
+                                        <tr>
+                                            <td class="td-photo">
+                                                <img src="images/funcionario/{{ $funcionario->photo }}" alt="image" />
+                                            </td>
+                                            <td class="pl-2 mr-4">
+                                                <span class="pl-2">{{ $funcionario->name }}</span>
+                                            </td>
+                                            <td> {{ $funcionario->email }} </td>
+                                            <td>
+                                                @auth
+                                                <div class="btn-group" role="group" aria-label="Basic example">
+                                                    <a class="btn btn-outline-success" target="true" href="https://api.whatsapp.com/send?phone=55{{ preg_replace('/[^0-9]/', '', $funcionario->whatsapp) }}">
+                                                        <i class="mdi mdi-whatsapp"></i>
+                                                    </a>
+                                                    <a class="btn btn-outline-danger ml-01 close-modal" onclick="acao()">
+                                                        <i class="mdi mdi-delete"></i>
+                                                    </a>
+                                                    <script>
+                                                        function acao() {
+                                                            Swal.fire({
+                                                                title: "Excluir colaborador",
+                                                                text: "Tem certeza que deseja excluir colaborador!",
+                                                                icon: "warning",
+                                                                button: "Yes!",
+                                                                showCloseButton: true,
+                                                                showCancelButton: true,
+                                                                focusConfirm: false,
+
+
+                                                                cancelButtonText: 'Não!',
+
+                                                            }).then((value) => {
+                                                                if (value.isConfirmed) {
+
+                                                                    fetch('/delete-func/{{ $funcionario->id }}').then(response => {
+                                                                        console.log(response)
+                                                                        if (response.redirected) {
+                                                                            location.href = '/delete'
+                                                                        }
+                                                                    }).catch(err => {
+                                                                        console.log(err)
+
+                                                                    })
+                                                                }
+                                                            });
+                                                        }
+
+                                                        function fechar() {
+                                                            let modal = document.querySelector('.modalAlert')
+                                                            modal.style.display = 'none';
+                                                        }
+                                                    </script>
+
+                                                </div>
+                                                @endauth
+                                                @guest
+                                                <a class="badge badge-outline-success whats" target="true" href="https://api.whatsapp.com/send?phone=55{{ preg_replace('/[^0-9]/', '', $funcionario->whatsapp) }}">
+                                                    <i class="mdi mdi-whatsapp"></i> WhatsApp
+                                                </a>
+                                                @endguest
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                    @endif
+                                    @endforeach
+                                </table>
+                            </div>
+                        </div>
+                    </ul>
+                    @endif
+                    @endforeach
+                    @endforeach
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Sair</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="modalEx" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modalFunc">
+                <div class="modal-body">
+                    Confirmar a exclusão!
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger">Deletar</button>
                 </div>
             </div>
         </div>

@@ -24,11 +24,10 @@ Route::get('/404', function () {return view('layouts.404');});
 Auth::routes();
 
 /****  Routes  home ****/
-Route::get('/', [LojaController::class, 'indice']);
-Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware('auth');
+Route::get('/', [LojaController::class, 'indice'])->middleware('auth');
 
 /****  Routes  Loja ****/
-Route::get('/index', [LojaController::class, 'index'])->middleware('auth');
+Route::get('/index', [LojaController::class, 'index']);
 Route::get('/create', [LojaController::class, 'create'])->middleware('auth');
 Route::post('/add', [LojaController::class, 'store']);
 Route::get('/delete', [LojaController::class, 'delete'])->middleware('auth');

@@ -94,8 +94,8 @@
         @auth
         <nav class="sidebar sidebar-offcanvas" id="sidebar">
             <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
-                <a class="sidebar-brand brand-logo" href="{{ url('/') }}"><img src="images/PrWhats.svg" alt="logo"></a>
-                <a class="sidebar-brand brand-logo-mini" href="{{ url('/') }}"><img src="images/PrWhatsMini.svg" alt="logo"></a>
+                <a class="sidebar-brand brand-logo" href="{{ url('index') }}"><img src="images/PrWhats.svg" alt="logo"></a>
+                <a class="sidebar-brand brand-logo-mini" href="{{ url('index') }}"><img src="images/PrWhatsMini.svg" alt="logo"></a>
             </div>
             <ul class="nav">
                 <li class="nav-item nav-category">
@@ -117,7 +117,7 @@
                         <span class="menu-title">Loja</span>
                         <i class="menu-arrow"></i>
                     </a>
-                    <div class="collapse" id="tagloja" style="">
+                    <div class="collapse" id="tagloja">
                         <ul class="nav flex-column sub-menu">
                             <li class="nav-item"> <a class="nav-link" href="{{ url('/create') }}">Adicionar</a></li>
                             <li class="nav-item"> <a class="nav-link" href="{{ url('/delete') }}">Remover</a></li>
@@ -183,7 +183,6 @@
                         <li class="nav-item dropdown d-none d-lg-block">
                             <a class="nav-link btn btn-warning create-new-button" href="https://www.pecararabrecho.com.br/" target="true">+ Peça rara em casa</a>
                         </li>
-
                         @guest
                         @if (Route::has('login'))
                         <li class="nav-item nav-settings d-none d-lg-block">
