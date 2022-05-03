@@ -205,28 +205,28 @@
                             <input type="hidden" name="id" value="{{ $loja->id }}">
                             <div class="form-group">
                                 <label for="exampleInputName1">Nome da Unidade</label>
-                                <input type="text" class="form-control" value="{{ $loja->name }}" name="name" placeholder="Ex. 307 Sul">
+                                <input type="text" class="form-control" value="{{ $loja->name }}" name="name" placeholder="Ex. 307 Sul" required>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail3">Email</label>
-                                <input type="email" class="form-control" name="email" value="{{ $loja->email }}" placeholder="user@admin.com.br">
+                                <input type="email" class="form-control" name="email" value="{{ $loja->email }}" placeholder="user@admin.com.br" required>
                             </div>
                             <div class="form-group">
                                 <label for="inputPhone">Telefone</label>
-                                <input type="text" class="form-control" name="phone" value="{{ $loja->phone }}" placeholder="(xx)xxxxx-xxxx" onkeypress="$(this).mask('(00) 0000-00009')">
+                                <input type="text" class="form-control" name="phone" value="{{ $loja->phone }}" placeholder="(xx)xxxxx-xxxx" onkeypress="$(this).mask('(00) 0000-00009')" required>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-2">
                                     <label for="inputZip">CEP</label>
-                                    <input type="text" class="form-control" value="{{ $loja->cep }}" name="cep">
+                                    <input type="text" class="form-control" value="{{ $loja->cep }}" name="cep" required>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="inputCity">Cidade</label>
-                                    <input type="text" class="form-control" value="{{ $loja->city }}" name="city">
+                                    <input type="text" class="form-control" value="{{ $loja->city }}" name="city" required>
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="inputState">UF</label>
-                                    <select id="uf" name="uf" class="form-control">
+                                    <select id="uf" name="uf" class="form-control" required>
                                         <option selected value="{{ $loja->uf }}">{{ $loja->uf }}</option>
                                         <option value="AC">Acre</option>
                                         <option value="AL">Alagoas</option>
@@ -261,28 +261,23 @@
                             <div class="form-row">
                                 <div class="form-group col-md-4">
                                     <label for="inputCity">Bairro</label>
-                                    <input type="text" class="form-control" value="{{ $loja->district }}" name="district">
+                                    <input type="text" class="form-control" value="{{ $loja->district }}" name="district" required>
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="inputCity">Rua</label>
-                                    <input type="text" class="form-control" value="{{ $loja->street }}" name="street">
+                                    <input type="text" class="form-control" value="{{ $loja->street }}" name="street" required>
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="inputZip">Número</label>
-                                    <input type="text" class="form-control" value="{{ $loja->number }}" name="number">
+                                    <input type="text" class="form-control" value="{{ $loja->number }}" name="number" required>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label>Setores</label>
-                                <select class="js-example-basic-multiple" name="sectors[]" multiple="multiple" style="width:100%">
+                                <select class="js-example-basic-multiple" name="sectors[]" required multiple="multiple" style="width:100%">
                                     @foreach ($setors as $setor)
-                                    @foreach ($loja->sectors as $sector)
-                                    @if ($sector == $setor->id)
-                                    <option selected="true" value="{{ $setor->id }}">{{ $setor->name }}</option>
-                                    @elseif ($sector != $setor->id)
-                                    <option value="{{ $setor->id }}">{{ $setor->name }}</option>
-                                    @endif
-                                    @endforeach
+                                    {{$key = in_array($setor->id, $loja->sectors);}}
+                                    <option {{($key == true) ? "selected='true'" : ""}} value="{{ $setor->id }}">{{ $setor->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -408,7 +403,7 @@
                                             <td>
                                                 @auth
                                                 <div class="btn-group" role="group" aria-label="Basic example">
-                                                    <a class="btn btn-outline-success" target="true" href="https://api.whatsapp.com/send?phone=55{{ preg_replace('/[^0-9]/', '', $funcionario->whatsapp) }}">
+                                                    <a class="btn btn-outline-success" target="true" href="https://api.whatsapp.com/send?phone=55{{ preg_replace('/[^0-9]/', '', $funcionario->whatsapp) }}&text=Ol%C3%A1%20gostaria%20de%20tirar%20algumas%20d%C3%BAvidas.">
                                                         <i class="mdi mdi-whatsapp"></i>
                                                     </a>
                                                     <a class="btn btn-outline-danger ml-01 close-modal" onclick="acao()">
@@ -453,7 +448,7 @@
                                                 </div>
                                                 @endauth
                                                 @guest
-                                                <a class="badge badge-outline-success whats" target="true" href="https://api.whatsapp.com/send?phone=55{{ preg_replace('/[^0-9]/', '', $funcionario->whatsapp) }}">
+                                                <a class="badge badge-outline-success whats" target="true" href="https://api.whatsapp.com/send?phone=55{{ preg_replace('/[^0-9]/', '', $funcionario->whatsapp) }}&text=Ol%C3%A1%20gostaria%20de%20tirar%20algumas%20d%C3%BAvidas.">
                                                     <i class="mdi mdi-whatsapp"></i> WhatsApp
                                                 </a>
                                                 @endguest

@@ -49,7 +49,7 @@ class LojaController extends Controller
         $Loja->sectors  = $request->sectors; 
         $Loja->photo = $this->redimensionarImg($request, 'images/loja/', 324, 172);
         $Loja->save();
-        return redirect('/')->with('msg', 'Unidade cadastrada com sucesso!!');
+        return redirect('/index')->with('msg', 'Unidade cadastrada com sucesso!!');
     }
 
 

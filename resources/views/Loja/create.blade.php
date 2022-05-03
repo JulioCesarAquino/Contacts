@@ -8,28 +8,28 @@
                 @csrf
                 <div class="form-group">
                     <label for="exampleInputName1">Nome da Unidade</label>
-                    <input type="text" class="form-control" name="name" placeholder="Ex. 307 Sul">
+                    <input type="text" class="form-control" name="name" placeholder="Ex. 307 Sul" required>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail3">Email</label>
-                    <input type="email" class="form-control" name="email" placeholder="user@admin.com.br">
+                    <input type="email" class="form-control" name="email" placeholder="user@admin.com.br" required>
                 </div>
                 <div class="form-group">
                     <label for="inputPhone">Telefone</label>
-                    <input type="text" class="form-control" name="phone" placeholder="(xx)xxxxx-xxxx" onkeypress="$(this).mask('(00) 00000-0009')">
+                    <input type="text" class="form-control" name="phone" placeholder="(xx)xxxxx-xxxx" onkeypress="$(this).mask('(00) 00000-0009')" required>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-2">
                         <label for="inputZip">CEP</label>
-                        <input type="text" class="form-control" name="cep" onkeypress="$(this).mask('00000-000')">
+                        <input type="text" class="form-control" name="cep" onkeypress="$(this).mask('00000-000')" required>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="inputCity">Cidade</label>
-                        <input type="text" class="form-control" name="city">
+                        <input type="text" class="form-control" name="city" required>
                     </div>
                     <div class="form-group col-md-4">
                         <label for="inputState">UF</label>
-                        <select id="uf" name="uf" class="form-control">
+                        <select id="uf" name="uf" class="form-control" required>
                             <option selected>Selecione...</option>
                             <option value="AC">Acre</option>
                             <option value="AL">Alagoas</option>
@@ -64,20 +64,20 @@
                 <div class="form-row">
                     <div class="form-group col-md-4">
                         <label for="inputCity">Bairro</label>
-                        <input type="text" class="form-control" name="district">
+                        <input type="text" class="form-control" name="district" required>
                     </div>
                     <div class="form-group col-md-4">
                         <label for="inputCity">Rua</label>
-                        <input type="text" class="form-control" name="street">
+                        <input type="text" class="form-control" name="street" required>
                     </div>
                     <div class="form-group col-md-4">
                         <label for="inputZip">Número</label>
-                        <input type="text" class="form-control" name="number">
+                        <input type="text" class="form-control" name="number" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label>Setores</label>
-                    <select class="js-example-basic-multiple" name="sectors[]" multiple="multiple" style="width:100%">
+                    <select class="js-example-basic-multiple" name="sectors[]" multiple="multiple" style="width:100%" required>
                         @foreach ($setors as $setor)
                             <option value="{{ $setor->id }}">{{ $setor->name }}</option>
                         @endforeach
@@ -93,7 +93,7 @@
                                     <div class="text"><p>ㅤㅤㅤㅤㅤㅤㅤclique para selecionar a imagem</p></div>
                                 </div>
                                 <input type="file" name="photo" id="fileImage"
-                                    style="display:none" accept="image/*">
+                                    style="display:none" accept="image/*" required>
                             </label>
                         </div>
                     </div>

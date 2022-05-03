@@ -22,7 +22,7 @@ class FuncionarioController extends Controller
         $Funcionario->setor_id = $request->setor_func;
         $Funcionario->photo = $this->redimensionarImg($request, 'images/funcionario/', 100 , 100);
         $Funcionario->save();
-        return redirect('/')->with('msg', 'Colaborador cadastrado com sucesso!!');
+        return redirect('/index')->with('msg', 'Colaborador cadastrado com sucesso!!');
     }
 
     public function destroy($id)
