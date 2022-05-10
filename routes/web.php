@@ -24,9 +24,10 @@ Route::get('/404', function () {return view('layouts.404');});
 Auth::routes();
 
 /****  Routes  home ****/
-Route::get('/', [LojaController::class, 'indice'])->middleware('auth');
+
 
 /****  Routes  Loja ****/
+Route::get('/', [LojaController::class, 'index']);
 Route::get('/index', [LojaController::class, 'index']);
 Route::get('/create', [LojaController::class, 'create'])->middleware('auth');
 Route::post('/add', [LojaController::class, 'store']);

@@ -65,7 +65,7 @@
 
         </div>
     </div>
-    <!-- Modal Contatos-->
+    <!-- Modal add colaborador/contatos -->
     <div class="modal fade" id="contact-{{ $loja->id }}" tabindex="-1" role="dialog" aria-labelledby="contact-{{ $loja->id }}Label" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -109,74 +109,33 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="row">
-                                <div class="col-md-4">&nbsp;</div>
-                                <div class="col-md-4">
+                            <div class="d-flex justify-content-center">
                                     <div class="image_area">
                                         <label for="fileFunc{{ $loja->id }}">
                                             <img src="images/user.png" class="img-responsive imgPhoto1" id="imgFunc{{ $loja->id }}" />
-                                            <div class="overlay">
+                                            <div class="overlay border-img">
                                                 <div class="text">
-                                                    <p>ㅤㅤㅤㅤㅤㅤㅤclique para selecionar a imagem</p>
+                                                    <p>Selecione</p>
                                                 </div>
                                             </div>
                                             <input required="true " type="file" accept="image/*" name="photo" id="fileFunc{{ $loja->id }}" style="display:none">
                                         </label>
                                     </div>
-                                </div>
                             </div>
                             <button type="submit" class="btn btn-primary mr-2">Enviar</button>
                         </form>
                         <script>
-                            /* upload image edit */
-                            /********************/
-                            let imgFunc {
-                                {
-                                    $loja - > id
-                                }
-                            } = document.getElementById('imgFunc{{ $loja->id }}');
-                            let fileFunc {
-                                {
-                                    $loja - > id
-                                }
-                            } = document.getElementById('fileFunc{{ $loja->id }}');
-
-                            fileFunc {
-                                {
-                                    $loja - > id
-                                }
-                            }.addEventListener('change', (event) => {
-                                let readerFunc {
-                                    {
-                                        $loja - > id
-                                    }
-                                } = new FileReader();
-
-                                readerFunc {
-                                    {
-                                        $loja - > id
-                                    }
-                                }.onload = () => {
-                                    imgFunc {
-                                        {
-                                            $loja - > id
-                                        }
-                                    }.src = readerFunc {
-                                        {
-                                            $loja - > id
-                                        }
-                                    }.result;
-                                }
-                                readerFunc {
-                                    {
-                                        $loja - > id
-                                    }
-                                }.readAsDataURL(fileFunc {
-                                    {
-                                        $loja - > id
-                                    }
-                                }.files[0]);
-                            });
+                          /* upload image contact */
+                          /********************/
+                          let imgFunc{{$loja->id}} = document.getElementById('imgFunc{{$loja->id}}');
+                          let fileFunc{{$loja->id}} = document.getElementById('fileFunc{{$loja->id}}');
+                          fileFunc{{$loja->id}}.addEventListener('change', (event) => {
+                              let readerFunc{{$loja->id}} = new FileReader();
+                                  readerFunc{{$loja->id}}.onload = () => {
+                                      imgFunc{{$loja->id}}.src = readerFunc{{$loja->id}}.result;
+                              }
+                              readerFunc{{$loja->id}}.readAsDataURL(fileFunc{{$loja->id}}.files[0]);
+                          });
                         </script>
                     </div>
                 </div>
@@ -213,7 +172,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="inputPhone">Telefone</label>
-                                <input type="text" class="form-control" name="phone" value="{{ $loja->phone }}" placeholder="(xx)xxxxx-xxxx" onkeypress="$(this).mask('(00) 0000-00009')" required>
+                                <input type="text" class="form-control" name="phone" value="{{ $loja->phone }}" placeholder="(xx)xxxxx-xxxx" onkeypress="$(this).mask('(00) 00000-0009')" required>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-2">
@@ -281,76 +240,34 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="row">
-                                <div class="col-md-4">&nbsp;</div>
-                                <div class="col-md-4">
+                            <div class="d-flex justify-content-center">
                                     <div class="image_area">
                                         <label for="editfile{{ $loja->id }}">
                                             <img src="images/loja/{{ $loja->photo }}" class="img-responsive imgPhoto" id="editImg{{ $loja->id }}" />
                                             <div class="overlay">
                                                 <div class="text">
-                                                    <p>ㅤㅤㅤㅤㅤㅤㅤclique para selecionar a imagem</p>
+                                                    <p>Selecione</p>
                                                 </div>
                                             </div>
                                             <input type="file" name="photo" value="{{$loja->photo}}" accept="image/*" id="editfile{{ $loja->id }}" style="display:none">
                                         </label>
                                     </div>
-                                </div>
                             </div>
                             <button type="submit" class="btn btn-primary mr-2">Atualizar</button>
                         </form>
                     </div>
                 </div>
-
                 <script>
                     /* upload image edit */
                     /********************/
-                    let photo {
-                        {
-                            $loja - > id
+                    let photo{{$loja->id}} = document.getElementById('editImg{{ $loja->id }}');
+                    let file{{$loja->id}} = document.getElementById('editfile{{ $loja->id }}');
+                        file{{$loja->id}}.addEventListener('change', (event) => {
+                            let reader{{$loja->id}} = new FileReader();
+                        reader{{$loja->id}}.onload = () => {
+                            photo{{$loja->id}}.src = reader{{$loja->id}}.result;
                         }
-                    } = document.getElementById('editImg{{ $loja->id }}');
-                    let file {
-                        {
-                            $loja - > id
-                        }
-                    } = document.getElementById('editfile{{ $loja->id }}');
-
-                    file {
-                        {
-                            $loja - > id
-                        }
-                    }.addEventListener('change', (event) => {
-                        let reader {
-                            {
-                                $loja - > id
-                            }
-                        } = new FileReader();
-
-                        reader {
-                            {
-                                $loja - > id
-                            }
-                        }.onload = () => {
-                            photo {
-                                {
-                                    $loja - > id
-                                }
-                            }.src = reader {
-                                {
-                                    $loja - > id
-                                }
-                            }.result;
-                        }
-                        reader {
-                            {
-                                $loja - > id
-                            }
-                        }.readAsDataURL(file {
-                            {
-                                $loja - > id
-                            }
-                        }.files[0]);
+                        reader{{$loja->id}}.readAsDataURL(file{{$loja->id}}.files[0]);
                     });
                 </script>
                 <div class="modal-footer">
@@ -419,17 +336,14 @@
                                                                 showCloseButton: true,
                                                                 showCancelButton: true,
                                                                 focusConfirm: false,
-
-
-                                                                cancelButtonText: 'Não!',
+                                                                cancelButtonText: 'Não',
 
                                                             }).then((value) => {
                                                                 if (value.isConfirmed) {
-
-                                                                    fetch('/delete-func/{{ $funcionario->id }}').then(response => {
+                                                                    fetch('/delete-func/{{$funcionario->id}}').then(response => {
                                                                         console.log(response)
                                                                         if (response.redirected) {
-                                                                            location.href = '/delete'
+                                                                            location.href = '/index'
                                                                         }
                                                                     }).catch(err => {
                                                                         console.log(err)

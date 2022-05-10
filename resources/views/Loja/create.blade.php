@@ -90,7 +90,7 @@
                             <label for="fileImage">
                                 <img src="images/storee.png" class="img-responsive imgPhoto" id="imgPhoto"/>
                                 <div class="overlay">
-                                    <div class="text"><p>ㅤㅤㅤㅤㅤㅤㅤclique para selecionar a imagem</p></div>
+                                    <div class="text"><p>Selecione a Imagem</p></div>
                                 </div>
                                 <input type="file" name="photo" id="fileImage"
                                     style="display:none" accept="image/*" required>
@@ -115,6 +115,4 @@
                  reader.readAsDataURL(file.files[0]);
             });
     </script>
-    
-
 @endsection

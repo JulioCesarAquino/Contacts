@@ -21,11 +21,6 @@ class LojaController extends Controller
         
     }
 
-    public function indice()
-    {
-        return view('welcome');
-    }
-
     public function create()
     {
 

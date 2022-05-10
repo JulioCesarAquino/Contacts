@@ -29,6 +29,6 @@ class FuncionarioController extends Controller
     {
         Funcionario::FindOrFail($id)->delete();
 
-        return redirect('/')->with('msg', 'Funcionário Deletado com Sucesso!!');
+        return redirect('/index')->with('msg', 'Funcionário Deletado com Sucesso!!');
     }
 }

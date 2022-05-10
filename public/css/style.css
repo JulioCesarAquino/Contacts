@@ -29440,10 +29440,6 @@ div.tagsinput span.tag a {
     position: relative;
 }
 
-img {
-    max-width: 100%;
-}
-
 .preview {
     overflow: hidden;
     width: 160px;
@@ -29463,10 +29459,16 @@ img {
     right: 0;
     background-color: rgba(255, 255, 255, 0.5);
     overflow: hidden;
-    height: 0;
+    height: 0px;
     transition: .5s ease;
-    width: 100%;
+    margin-left: 4%;
+    margin-right: 4%;
+}
+
+.border-img {
     border-radius: 0px 0px 70px 70px;
+    margin-left: 7.2%;
+    margin-right: 7.2%;
 }
 
 .image_area:hover .overlay {

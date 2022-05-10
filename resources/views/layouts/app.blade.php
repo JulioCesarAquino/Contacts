@@ -132,7 +132,7 @@
                         <span class="menu-title">Setor</span>
                         <i class="menu-arrow"></i>
                     </a>
-                    <div class="collapse" id="tagsetor" style="">
+                    <div class="collapse" id="tagsetor">
                         <ul class="nav flex-column sub-menu">
                             <li class="nav-item"> <a class="nav-link" href="{{ url('/create-setor') }}">Adicionar</a></li>
                             <li class="nav-item"> <a class="nav-link" href="#">Remover</a>
@@ -171,13 +171,6 @@
                     <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
                         <span class="mdi mdi-menu"></span>
                     </button>
-                    <ul class="navbar-nav w-100">
-                        <li class="nav-item w-100">
-                            <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
-                                <input type="text" class="form-control" placeholder="Pesquisar">
-                            </form>
-                        </li>
-                    </ul>
                     @endauth
                     <ul class="navbar-nav navbar-nav-right">
                         <li class="nav-item dropdown d-none d-lg-block">
@@ -194,7 +187,7 @@
                         @endif
                         @else
                         <li class="nav-item dropdown">
-                            <a class="nav-link pr-4" id="profileDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
                                 <div class="navbar-profile">
                                     <img class="img-xs rounded-circle" src="images/face15.jpg" alt="">
                                     <p class="mb-0 d-none d-sm-block navbar-profile-name">{{ Auth::user()->name }}
@@ -233,9 +226,11 @@
                         </li>
                         @endguest
                     </ul>
+                    @auth
                     <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
                         <span class="mdi mdi-format-line-spacing"></span>
                     </button>
+                    @endauth
                 </div>
             </nav>
             <!-- partial -->

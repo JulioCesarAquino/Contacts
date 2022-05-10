@@ -56,15 +56,15 @@
                                     showCloseButton: true,
                                     showCancelButton: true,
                                     focusConfirm: false,
-                                    cancelButtonText: 'Não!',
+                                    cancelButtonText: 'Não',
 
                                 }).then((value) => {
                                     if (value.isConfirmed) {
 
-                                        fetch('/destroy/{{ $loja->id }}').then(response => {
+                                        fetch('/destroy/{{$loja->id}}').then(response => {
                                             console.log(response)
                                             if (response.redirected) {
-                                                location.href = '/'
+                                                location.href = '/delete'
                                             }
                                         }).catch(err => {
                                             console.log(err)
