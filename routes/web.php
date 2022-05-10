@@ -6,6 +6,8 @@ use App\Http\Controllers\SetorController;
 use App\Http\Controllers\FuncionarioController;
 use App\Http\Controllers\HomeController;
 use App\Models\Funcionario;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +24,7 @@ Route::get('/404', function () {return view('layouts.404');});
 
 /****  Routes  Access and register ****/
 Auth::routes();
+Route::get('/users', function () {return view('auth.edit', ['users' => User::all()]);});
 
 /****  Routes  home ****/
 

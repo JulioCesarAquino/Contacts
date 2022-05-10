@@ -29611,3 +29611,7 @@ a:hover .whats {
 .font-card-loja {
     font-family: 'Karla', sans-serif;
 }
+
+.font-size-icon {
+    font-size: 1.525rem !important;
+}

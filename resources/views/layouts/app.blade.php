@@ -29,6 +29,7 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Karla:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 
     <!-- Croppie upload image -->
 
@@ -148,12 +149,12 @@
                         <span class="menu-title">Usuários</span>
                         <i class="menu-arrow"></i>
                     </a>
-                    <div class="collapse" id="ui-user" style="">
+                    <div class="collapse" id="ui-user">
                         <ul class="nav flex-column sub-menu">
                             <li class="nav-item"> <a class="nav-link" href="{{ route('register') }}">Adicionar</a></li>
-                            <li class="nav-item"> <a class="nav-link" href="{{ url('404') }}">Editar</a>
+                            <li class="nav-item"> <a class="nav-link" href="{{ url('users') }}">Editar</a>
                             </li>
-                            <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Deletar</a></li>
+                            <li class="nav-item"> <a class="nav-link" href="{{ url('users') }}">Deletar</a></li>
                         </ul>
                 </li>
             </ul>
@@ -189,7 +190,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
                                 <div class="navbar-profile">
-                                    <img class="img-xs rounded-circle" src="images/face15.jpg" alt="">
+                                <i class="bi font-size-icon bi-person-circle"></i>
                                     <p class="mb-0 d-none d-sm-block navbar-profile-name">{{ Auth::user()->name }}
                                     </p>
                                     <i class="mdi mdi-menu-down d-none d-sm-block"></i>
@@ -198,7 +199,7 @@
                             <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="profileDropdown">
                                 <h6 class="p-3 mb-0">Perfil</h6>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item preview-item">
+                                <a class="dropdown-item preview-item" href="{{ url('users') }}">
                                     <div class="preview-thumbnail">
                                         <div class="preview-icon bg-dark rounded-circle">
                                             <i class="mdi mdi-settings text-success"></i>
