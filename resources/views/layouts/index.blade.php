@@ -3,6 +3,7 @@
 <!-- Cards Administrador -->
 @extends('layouts.app')
 @section('content')
+
 @if (session('msg'))
 <div class="alert alert-success alert-dismissible fade show" role="alert">
     <strong>Tudo Certo!</strong> {{ session('msg') }}
@@ -27,7 +28,13 @@
                                     <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z"></path>
                                     <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>
                                 </svg> {{$loja->district}}</h4>
-                            <p class="text-muted text-small">4 Hours Ago</p>
+                                @php
+                                $arr = $loja->created_at->toDateString();
+                                $data1 = new DateTime($arr);
+                                $data2 = new DateTime();
+                                $intervalo = $data1->diff($data2);
+                                @endphp
+                            <p class="text-muted text-small">{{$intervalo->format('%m months ago')}}</p>
                         </div>
                         <span class="progress"></span>
                         <div class="row">
@@ -47,9 +54,11 @@
                 <div class="col">
                     <a href="#" class="btn btn-secondary" data-toggle="modal" data-target="#contact-{{ $loja->id }}"><i class="mdi mdi-account-multiple-plus"></i>Colab.</a>
                 </div>
+                @if(Auth::user()->can('Administrador') || Auth::user()->can('Gerente'))
                 <div class="col">
                     <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#edit-{{ $loja->id }}"><i class="mdi mdi-tooltip-edit"></i>Editar</a>
                 </div>
+                @endcan
                 <div class="col">
                     <a href="#" class="btn btn-success" data-toggle="modal" data-target="#id-{{ $loja->id }}"><i class="mdi mdi-whatsapp"></i>Whats</a>
                 </div>
@@ -158,7 +167,6 @@
                 </div>
                 <div class="modal-body">
                     <div class="card-forms">
-                        <h4 class="card-title">Cadastramento de unidades peça rara</h4>
                         <form class="forms-sample" method="POST" action="/edit" enctype="multipart/form-data">
                             @csrf
                             <input type="hidden" name="id" value="{{ $loja->id }}">

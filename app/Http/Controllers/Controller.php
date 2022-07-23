@@ -11,25 +11,26 @@ use App\Models\Loja;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
-    public static function redimensionarImg($file, $directory, $width, $height)
+    public static function redimensionarImg($file, $directory, $newWidth, $newHeight)
     {
         if ($file->hasFile('photo') && $file->file('photo')->isValid()) {
             $requestImage = $file->photo;
             $extension  = $requestImage->extension();
-            $temporaryImage = $extension == 'png' ? imagecreatefrompng($requestImage->getPathname()) : imagecreatefromjpeg($requestImage->getPathname());
-            $originalWidth = imagesx($temporaryImage);
-            $originalHeight = imagesy($temporaryImage);
-            // Largura e altura pretendida em pixels
-            $newWidth = $width;
-            $newHeight = $height;
-            $resizeImage = imagecreatetruecolor($newWidth, $newHeight);
-            imagecopyresampled($resizeImage, $temporaryImage, 0, 0, 0, 0, $newWidth, $newHeight, $originalWidth, $originalHeight);
-            
-            $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extension;
-            imagejpeg($resizeImage, $directory . $imageName);
-            return $imageName;
-        }else {
-            echo " SEGUNDA VALIDAÇÃO";
+            $allowedfileExtension = ['pdf', 'jpg', 'png', 'webp', 'jpeg'];
+            $check = in_array($extension, $allowedfileExtension);
+            if ($check) {
+                $temporaryImage = imagecreatefromstring(file_get_contents($requestImage));
+                $sizeImage = getimagesize($requestImage);
+                $resizeImage = imagecreatetruecolor($newWidth, $newHeight);
+                imagecopyresampled($resizeImage, $temporaryImage, 0, 0, 0, 0, $newWidth, $newHeight, $sizeImage['0'], $sizeImage['1']);
+                $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extension;
+                imagejpeg($resizeImage, $directory . $imageName);
+                return $imageName;
+            } else {
+                return response()->json(['invalid_file_format'], 422);
+            }
+        } else {
+            return response()->json(['upload_file_not_found'], 400);
         }
     }
 }

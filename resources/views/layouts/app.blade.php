@@ -102,6 +102,7 @@
                 <li class="nav-item nav-category">
                     <span class="nav-link">Gestão de contatos</span>
                 </li>
+                @if(Auth::user()->can('Administrador') || Auth::user()->can('Gerente'))
                 <li class="nav-item menu-items active">
                     <a class="nav-link" href="{{ url('index') }}">
                         <span class="menu-icon">
@@ -110,6 +111,8 @@
                         <span class="menu-title">Unidade</span>
                     </a>
                 </li>
+                @endif
+                @can('Administrador')
                 <li class="nav-item menu-items">
                     <a class="nav-link collapsed" data-toggle="collapse" href="#tagloja" aria-expanded="false" aria-controls="tagloja">
                         <span class="menu-icon">
@@ -141,6 +144,8 @@
                         </ul>
                     </div>
                 </li>
+                @endcan
+                @if(Auth::user()->can('Administrador') || Auth::user()->can('Gerente'))
                 <li class="nav-item menu-items">
                     <a class="nav-link collapsed" data-toggle="collapse" href="#ui-user" aria-expanded="false" aria-controls="ui-user">
                         <span class="menu-icon">
@@ -157,6 +162,7 @@
                             <li class="nav-item"> <a class="nav-link" href="{{ url('users') }}">Deletar</a></li>
                         </ul>
                 </li>
+                @endif
             </ul>
         </nav>
         @endauth
@@ -175,7 +181,7 @@
                     @endauth
                     <ul class="navbar-nav navbar-nav-right">
                         <li class="nav-item dropdown d-none d-lg-block">
-                            <a class="nav-link btn btn-warning create-new-button" href="https://www.pecararabrecho.com.br/" target="true">+ Peça rara em casa</a>
+                            <a class="nav-link btn btn-warning create-new-button" href="https://app.pecararabrecho.com.br" target="true">CLUBE PEÇA RARA</a>
                         </li>
                         @guest
                         @if (Route::has('login'))
@@ -188,7 +194,7 @@
                         @endif
                         @else
                         <li class="nav-item dropdown">
-                            <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link" id="profileDropdown" href="#drop" data-toggle="dropdown" aria-expanded="false">
                                 <div class="navbar-profile">
                                 <i class="bi font-size-icon bi-person-circle"></i>
                                     <p class="mb-0 d-none d-sm-block navbar-profile-name">{{ Auth::user()->name }}
@@ -196,7 +202,7 @@
                                     <i class="mdi mdi-menu-down d-none d-sm-block"></i>
                                 </div>
                             </a>
-                            <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="profileDropdown">
+                            <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" id="drop" aria-labelledby="profileDropdown">
                                 <h6 class="p-3 mb-0">Perfil</h6>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item preview-item" href="{{ url('users') }}">

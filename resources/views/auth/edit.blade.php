@@ -47,8 +47,8 @@
                         <script>
                             function acao() {
                                 Swal.fire({
-                                    title: "Excluir Registro da loja!",
-                                    text: "Tem certeza que deseja excluir a Unidade!",
+                                    title: "Excluir Registro?",
+                                    text: "Tem certeza que deseja excluir o Usuário!",
                                     icon: "warning",
                                     button: "Yes!",
                                     showCloseButton: true,

@@ -83,9 +83,7 @@
                         @endforeach
                     </select>
                 </div>
-                <div class="row">
-                    <div class="col-md-4">&nbsp;</div>
-                    <div class="col-md-4">
+                <div class="d-flex justify-content-center">
                         <div class="image_area">
                             <label for="fileImage">
                                 <img src="images/storee.png" class="img-responsive imgPhoto" id="imgPhoto"/>
@@ -95,7 +93,6 @@
                                 <input type="file" name="photo" id="fileImage"
                                     style="display:none" accept="image/*" required>
                             </label>
-                        </div>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary mr-2">Enviar</button>

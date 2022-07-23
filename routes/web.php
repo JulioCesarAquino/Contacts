@@ -1,13 +1,17 @@
 <?php
 
+use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LojaController;
 use App\Http\Controllers\SetorController;
 use App\Http\Controllers\FuncionarioController;
 use App\Http\Controllers\HomeController;
 use App\Models\Funcionario;
+use Spatie\Permission\Models\Permission;
 use App\Models\User;
+use App\Http\Controllers\Auth\Register;
 use Illuminate\Support\Facades\Auth;
+use Spatie\Permission\Traits\HasRoles;
 
 /*
 |--------------------------------------------------------------------------

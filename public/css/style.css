@@ -29204,7 +29204,7 @@ div.tagsinput span.tag a {
 
 @media (min-width: 992px) {
     .sidebar-icon-only .navbar {
-        left: 70px;
+        left: 1px;
     }
     .sidebar-icon-only .navbar .navbar-menu-wrapper {
         width: 100%;
