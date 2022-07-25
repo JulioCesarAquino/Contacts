@@ -1,22 +1,25 @@
 @extends('layouts.app')
-
 @section('content')
+@if (session('msg'))
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Tudo Certo!</strong> {{session('msg')}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+@endif
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Register') }}</div>
-
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
-
                         <div class="row mb-3">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
-
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
                                 @error('name')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -24,7 +27,6 @@
                                 @enderror
                             </div>
                         </div>
-
                         <div class="row mb-3">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
@@ -51,6 +53,17 @@
                                     <option selected>-- select --</option>
                                     <option value="Usuário">Usuário</option>
                                     @endcan
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Unidade peça rara') }}</label>
+                            <div class="col-md-6">
+                                <select class="form-control" name="store_id">
+                                    <option selected>-- select --</option>
+                                    @foreach ($lojas as $loja)
+                                    <option value="{{$loja->id}}">{{$loja->name}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>

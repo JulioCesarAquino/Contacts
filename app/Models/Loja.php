@@ -17,4 +17,8 @@ class Loja extends Model
     public function funcionarios(){
         return $this->hasMany('App\Models\Funcionario');
     }
+    
+    public function users() {
+        return $this->belongsToMany('App\Models\User');
+    }
 }

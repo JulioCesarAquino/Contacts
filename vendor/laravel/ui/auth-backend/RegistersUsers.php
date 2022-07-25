@@ -6,6 +6,7 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Loja;
 use Spatie\Permission\Models\Permission;
 
 trait RegistersUsers
@@ -20,7 +21,8 @@ trait RegistersUsers
     public function showRegistrationForm()
     {
         $permissions = Permission::all();
-        return view('auth.register',['permissions' => $permissions]);
+        $lojas = Loja::all();
+        return view('auth.register', ['permissions' => $permissions], ['lojas' => $lojas]);
     }
 
     /**
@@ -31,19 +33,19 @@ trait RegistersUsers
      */
     public function register(Request $request)
     {
+
         $this->validator($request->all())->validate();
 
         event(new Registered($user = $this->create($request->all())));
-
-        $this->guard()->login($user);
+        // $this->guard()->login($user);
 
         if ($response = $this->registered($request, $user)) {
             return $response;
         }
 
         return $request->wantsJson()
-                    ? new JsonResponse([], 201)
-                    : redirect($this->redirectPath());
+            ? new JsonResponse([], 201)
+            : redirect('/register')->with('msg','O usuário foi cadastrado!!');
     }
 
     /**

@@ -13,14 +13,14 @@
     <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
 
-    
+
 
     <link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">
 
     <link rel="stylesheet" href="vendors/select2/select2.min.css">
     <link rel="stylesheet" href="vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
-    
+
 
     <link rel="stylesheet" href="vendors/jvectormap/jquery-jvectormap.css">
     <link rel="stylesheet" href="vendors/flag-icon-css/css/flag-icon.min.css">
@@ -163,7 +163,7 @@
                         </ul>
                 </li>
                 @endif
-            </ul>
+            </ul>   
         </nav>
         @endauth
         <!-- partial -->
@@ -196,7 +196,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link" id="profileDropdown" href="#drop" data-toggle="dropdown" aria-expanded="false">
                                 <div class="navbar-profile">
-                                <i class="bi font-size-icon bi-person-circle"></i>
+                                    <i class="bi font-size-icon bi-person-circle"></i>
                                     <p class="mb-0 d-none d-sm-block navbar-profile-name">{{ Auth::user()->name }}
                                     </p>
                                     <i class="mdi mdi-menu-down d-none d-sm-block"></i>

@@ -59,10 +59,10 @@
                                 }).then((value) => {
                                     if (value.isConfirmed) {
 
-                                        fetch('/destroy/{{$user->id}}').then(response => {
+                                        fetch('/').then(response => {
                                             console.log(response)
                                             if (response.redirected) {
-                                                location.href = '/delete'
+                                                location.href = '/'
                                             }
                                         }).catch(err => {
                                             console.log(err)
